@@ -239,22 +239,30 @@ def get_variant1():
 
 
 def main():
-    print("-"*40)
+    print("-" * 40)
     print("Purchasing a Phone: ")
-    print("-"*40)
-    print("Do you want a Phone?")
-    print("1. YES")
-    print("2. NO")
-    print("Enter your response: ")
-    choice = input()
-    if choice == "1" or choice.upper() == "YES":
-        phone()
-    elif choice == "2" or choice.upper() == "NO":
-        print("Thanks for the response.")
-    else:
-        print("Invalid choice")
+    print("-" * 40)  
+    while True:
+        try:
+            print("Do you want a Phone?")
+            print("1. YES")
+            print("2. NO")
+            print("Enter your response: ")
+            choice = input().strip()
+            
+            if choice == "1" or choice.upper() == "YES":
+                phone()
+                break
+            elif choice == "2" or choice.upper() == "NO":
+                print("Thanks for the response.")
+                break
+            else:
+                print("Invalid choice. Please enter 1 or 2.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+    
+    print("=" * 40)
 
-    print("="*40)
 
 
 if __name__ == "__main__":
