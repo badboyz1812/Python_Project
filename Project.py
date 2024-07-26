@@ -22,7 +22,7 @@ class Phone:
 
     def get_details(self):
         print("\n" + "="*40)
-        print(f"{'Phone Details':^40}")
+        print(f"{'Phone Details'}")
         print("="*40)
         return {
             "Model": self.model,
@@ -36,7 +36,6 @@ class Phone:
             "Processor": self.processor,
             "Price": self.price
         }
-
 
 class S21(Phone):
     def __init__(self, variant, color):
@@ -52,7 +51,7 @@ class S21(Phone):
         )
 
 class S22(Phone):
-    def __init__(self, variant,color):
+    def __init__(self, variant, color):
         super().__init__("Samsung S22", variant, color)
         self.set_specification(
             camera="108 MP + 10 MP + 10 MP + 12 MP",
@@ -65,8 +64,8 @@ class S22(Phone):
         )
 
 class S23(Phone):
-    def __init__(self,variant,color):
-        super().__init__("Samsung S23",variant,color)
+    def __init__(self, variant, color):
+        super().__init__("Samsung S23", variant, color)
         self.set_specification(
             camera="200 MP + 10 MP + 10 MP + 12 MP",
             battery="4800 mAh",
@@ -78,8 +77,8 @@ class S23(Phone):
         )
 
 class Iphone14(Phone):
-    def __init__(self,variant,color):
-        super().__init__("IPHONE 14",variant,color)
+    def __init__(self, variant, color):
+        super().__init__("IPHONE 14", variant, color)
         self.set_specification(
             camera="12 MP + 12 MP",
             battery="3279 mAh",
@@ -114,146 +113,151 @@ class Iphone15pro(Phone):
             os="iOS 16",
             processor="A16 Bionic",
             price="120000"
-
         )
 
-
-
 def phone():
-    print("-"*40)
-    print("Which Phone do you want? ")
-    print("1. Samsung")
-    print("2. Apple")
-    print("Choose your brand:")
-    choice1 = input()
-    if choice1 == "1" or choice1.upper() == "SAMSUNG":
-        selected_phone = samsung()
-        if selected_phone:
-            details = selected_phone.get_details()
-            for key, value in details.items():
-                print(f"{key}: {value}")
-    elif choice1 == "2" or choice1.upper() == "APPLE":
-        selected_phone = apple()
-        if selected_phone:
-            details = selected_phone.get_details()
-            for key, value in details.items():
-                print(f"{key}:{value}")
-    else:
-        print("Invalid choice")
-
+    while True:
+        print("-"*40)
+        print("Which Phone do you want? ")
+        print("1. Samsung")
+        print("2. Apple")
+        print("Choose your brand:")
+        choice1 = input()
+        if choice1 == "1" or choice1.upper() == "SAMSUNG":
+            selected_phone = samsung()
+            if selected_phone:
+                details = selected_phone.get_details()
+                for key, value in details.items():
+                    print(f"{key}: {value}")
+        elif choice1 == "2" or choice1.upper() == "APPLE":
+            selected_phone = apple()
+            if selected_phone:
+                details = selected_phone.get_details()
+                for key, value in details.items():
+                    print(f"{key}: {value}")
+        else:
+            print("Invalid choice. Please try again.")
+            continue
+        break
 
 def samsung():
-    print("-"*40)
-    print("Which model in Samsung are you looking for? ")
-    print("1. S21")
-    print("2. S22")
-    print("3. S23")
-    print("Choose your preferred model:")
-    choose = input()
-    variant = get_variant()
-    color = get_color()
-    
-    if choose == "1" or choose.upper() == "S21":
-        return S21(variant, color)
-    elif choose == "2" or choose.upper() == "S22":
-        return S22(variant, color)
-    elif choose == "3" or choose.upper() == "S23":
-        return S23(variant,color)
-    else:
-        print("Invalid model")
-    return None
-
-
-def apple():
-    print("-"*40)
-    print("Which Model in Apple are you looking for?")
-    print("1. iPhone 14")
-    print("2. iPhone 15")
-    print("3. iPhone 15 Pro")
-    print("Choose your model:")
-    choose2 = input()
-    variant1 = get_variant1()
-    color = get_color()
-
-    if choose2 == "1" or choose2.upper() == "IPHONE 14":
-        return Iphone14(variant1, color)
-    elif choose2 == "2" or choose2.upper() == "IPHONE 15":
-        return Iphone15(variant1, color)
-    elif choose2 == "3" or choose2.upper() == "IPHONE 15 PRO":
-        return Iphone15pro(variant1, color)
-    else:
-        print("Invalid model")
-
-
-def get_variant():
-    print("-"*40)
-    print("Choose Your Variant: ")
-    print("1. 128GB")
-    print("2. 256GB")
-    variant = input()
-    if(variant.upper() == "128GB"):
-        return variant.upper()
-    elif(variant.upper() == "256GB"):
-        return variant.upper()
-    else:
-        print("Invalid variant")
-        exit()
-
-
-
-def get_color():
-    print("-"*40)
-    print("Which color do you want: ")
-    print("1. White")
-    print("2. Black")
-    print("3. Silver")
-    color = input()
-    if(color.upper() == "WHITE"):
-        return color
-    elif(color.upper() == "BLACK"):
-        return color
-    elif(color.upper() == "SILVER"):
-        return color
-    else:
-        print("Invalid color choice")
-        exit()
-
-
-def get_variant1():
-    print("-"*40)
-    print("Choose Your Variant: ")
-    print("1. 128GB")
-    print("2. 256GB")
-    print("3. 512GB")
-    variant1 = input()
-    if(variant1.upper() == "128GB"):
-        return variant1.upper()
-    elif(variant1.upper() == "256GB"):
-        return variant1.upper()
-    elif(variant1.upper() == "512GB"):
-        return variant1.upper()
-    else:
-        print("Invalid variant")
-        exit()
+    while True:
+        print("-"*40)
+        print("Which model in Samsung are you looking for? ")
+        print("1. S21")
+        print("2. S22")
+        print("3. S23")
+        print("Choose your preferred model:")
+        choose = input()
+        
+        if choose == "1" or choose.upper() == "S21":
+            variant = get_variant()
+            color = get_color()
+            return S21(variant, color)
+        elif choose == "2" or choose.upper() == "S22":
+            variant = get_variant()
+            color = get_color()
+            return S22(variant, color)
+        elif choose == "3" or choose.upper() == "S23":
+            variant = get_variant()
+            color = get_color()
+            return S23(variant, color)
+        else:
+            print("Invalid model. Please try again.")
+            
         
 
+def apple():
+    while True:
+        print("-"*40)
+        print("Which Model in Apple are you looking for?")
+        print("1. iPhone 14")
+        print("2. iPhone 15")
+        print("3. iPhone 15 Pro")
+        print("Choose your model:")
+        choose2 = input()
+
+        if choose2 == "1" or choose2.upper() == "IPHONE 14":
+            variant1 = get_variant1()
+            color = get_color()
+            return Iphone14(variant1, color)
+        elif choose2 == "2" or choose2.upper() == "IPHONE 15":
+            variant1 = get_variant1()
+            color = get_color()
+            return Iphone15(variant1, color)
+        elif choose2 == "3" or choose2.upper() == "IPHONE 15 PRO":
+            variant1 = get_variant1()
+            color = get_color()
+            return Iphone15pro(variant1, color)
+        else:
+            print("Invalid model. Please try again.")
+            
+
+def get_variant():
+    while True:
+        print("-"*40)
+        print("Choose Your Variant: ")
+        print("1. 128GB")
+        print("2. 256GB")
+        variant = input().upper()
+        if(variant.upper() == "128GB"):
+            return variant.upper()
+        elif(variant.upper() == "256GB"):
+            return variant.upper()
+        else:
+            print("Invalid variant,Try again!")
+            
+
+def get_color():
+    while True:
+        print("-"*40)
+        print("Which color do you want: ")
+        print("1. White")
+        print("2. Black")
+        print("3. Silver")
+        color = input().upper()
+        if(color.upper() == "WHITE"):
+            return color
+        elif(color.upper() == "BLACK"):
+            return color
+        elif(color.upper() == "SILVER"):
+            return color
+        else:
+            print("Invalid color choice")
+
+def get_variant1():
+    while True:
+        print("-"*40)
+        print("Choose Your Variant: ")
+        print("1. 128GB")
+        print("2. 256GB")
+        print("3. 512GB")
+        variant1 = input().upper()
+        if(variant1.upper() == "128GB"):
+            return variant1.upper()
+        elif(variant1.upper() == "256GB"):
+            return variant1.upper()
+        elif(variant1.upper() == "512GB"):
+            return variant1.upper()
+        else:
+            print("Invalid variant")
 
 def main():
     print("-" * 40)
     print("Purchasing a Phone: ")
-    print("-" * 40)  
+    print("-" * 40)
     while True:
         try:
             print("Do you want a Phone?")
             print("1. YES")
             print("2. NO")
             print("Enter your response: ")
-            choice = input().strip()
+            choice = input().strip().upper()
             
-            if choice == "1" or choice.upper() == "YES":
+            if choice == "1" or choice == "YES":
                 phone()
                 break
-            elif choice == "2" or choice.upper() == "NO":
+            elif choice == "2" or choice == "NO":
                 print("Thanks for the response.")
                 break
             else:
@@ -263,7 +267,4 @@ def main():
     
     print("=" * 40)
 
-
-
-if __name__ == "__main__":
-    main()
+main()
