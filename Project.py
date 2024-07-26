@@ -247,23 +247,19 @@ def main():
     print("Purchasing a Phone: ")
     print("-" * 40)
     while True:
-        try:
-            print("Do you want a Phone?")
-            print("1. YES")
-            print("2. NO")
-            print("Enter your response: ")
-            choice = input().strip().upper()
-            
-            if choice == "1" or choice == "YES":
-                phone()
-                break
-            elif choice == "2" or choice == "NO":
-                print("Thanks for the response.")
-                break
-            else:
-                print("Invalid choice. Please enter 1 or 2.")
-        except Exception as e:
-            print(f"An error occurred: {e}")
+        print("Do you want a Phone?")
+        print("1. YES")
+        print("2. NO")
+        print("Enter your response: ")
+        choice = input().upper()
+        if choice == "1" or choice == "YES":
+            phone()
+            break
+        elif choice == "2" or choice == "NO":
+            print("Thanks for the response.")
+            break
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
     
     print("=" * 40)
 
