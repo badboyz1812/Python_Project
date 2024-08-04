@@ -20,6 +20,9 @@ class Phone:
         self.processor = processor
         self.price = price
 
+    def update_price(self, base_price, storage_price):
+        self.price = base_price + storage_price
+
     def get_details(self):
         print("\n" + "="*40)
         print(f"{'Phone Details'}")
@@ -40,6 +43,8 @@ class Phone:
 class S21(Phone):
     def __init__(self, variant, color):
         super().__init__("Samsung S21", variant, color)
+        base_price = 120000
+        storage_price = {"128GB": 0, "256GB": 10000}
         self.set_specification(
             camera="108 MP + 10 MP + 10 MP + 12 MP",
             battery="5000 mAh",
@@ -47,12 +52,15 @@ class S21(Phone):
             ram="12 GB",
             os="Android 11",
             processor="Exynos 2100",
-            price="120000"
+            price=base_price
         )
+        self.update_price(base_price, storage_price[variant])
 
 class S22(Phone):
     def __init__(self, variant, color):
         super().__init__("Samsung S22", variant, color)
+        base_price = 150000
+        storage_price = {"128GB": 0, "256GB": 15000}
         self.set_specification(
             camera="108 MP + 10 MP + 10 MP + 12 MP",
             battery="4500 mAh",
@@ -60,12 +68,15 @@ class S22(Phone):
             ram="12 GB",
             os="Android 12",
             processor="Snapdragon 888",
-            price="150000"
+            price=base_price
         )
+        self.update_price(base_price, storage_price[variant])
 
 class S23(Phone):
     def __init__(self, variant, color):
         super().__init__("Samsung S23", variant, color)
+        base_price = 160000
+        storage_price = {"128GB": 0, "256GB": 20000}
         self.set_specification(
             camera="200 MP + 10 MP + 10 MP + 12 MP",
             battery="4800 mAh",
@@ -73,12 +84,15 @@ class S23(Phone):
             ram="16 GB",
             os="Android 13",
             processor="Snapdragon 8 Gen 1",
-            price="160000"
+            price=base_price
         )
+        self.update_price(base_price, storage_price[variant])
 
 class Iphone14(Phone):
     def __init__(self, variant, color):
         super().__init__("IPHONE 14", variant, color)
+        base_price = 70000
+        storage_price = {"128GB": 0, "256GB": 10000, "512GB": 20000}
         self.set_specification(
             camera="12 MP + 12 MP",
             battery="3279 mAh",
@@ -86,12 +100,15 @@ class Iphone14(Phone):
             ram="6 GB",
             os="iOS 15",
             processor="A15 Bionic",
-            price="70000"
+            price=base_price
         )
+        self.update_price(base_price, storage_price[variant])
 
 class Iphone15(Phone):
     def __init__(self, variant, color):
         super().__init__("IPHONE 15", variant, color)
+        base_price = 80000
+        storage_price = {"128GB": 0, "256GB": 15000, "512GB": 25000}
         self.set_specification(
             camera="12 MP + 12 MP",
             battery="3400 mAh",
@@ -99,12 +116,15 @@ class Iphone15(Phone):
             ram="6 GB",
             os="iOS 16",
             processor="A16 Bionic",
-            price="80000"
+            price=base_price
         )
+        self.update_price(base_price, storage_price[variant])
 
 class Iphone15pro(Phone):
     def __init__(self, variant, color):
         super().__init__("IPHONE 15 PRO", variant, color)
+        base_price = 120000
+        storage_price = {"128GB": 0, "256GB": 15000, "512GB": 30000}
         self.set_specification(
             camera="48 MP + 12 MP + 12 MP",
             battery="4300 mAh",
@@ -112,8 +132,9 @@ class Iphone15pro(Phone):
             ram="8 GB",
             os="iOS 16",
             processor="A16 Bionic",
-            price="120000"
+            price=base_price
         )
+        self.update_price(base_price, storage_price[variant])
 
 def phone():
     while True:
@@ -164,8 +185,6 @@ def samsung():
             return S23(variant, color)
         else:
             print("Invalid model. Please try again.")
-            
-        
 
 def apple():
     while True:
@@ -191,7 +210,6 @@ def apple():
             return Iphone15pro(variant1, color)
         else:
             print("Invalid model. Please try again.")
-            
 
 def get_variant():
     while True:
@@ -205,8 +223,7 @@ def get_variant():
         elif(variant.upper() == "256GB"):
             return variant.upper()
         else:
-            print("Invalid variant,Try again!")
-            
+            print("Invalid variant, Try again!")
 
 def get_color():
     while True:
